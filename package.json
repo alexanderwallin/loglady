@@ -2,9 +2,9 @@
   "name": "loglady",
   "version": "1.0.0",
   "description": "Pretty logging for cli apps or for when debugging",
-  "main": "index.js",
+  "main": "src/loglady.js",
   "scripts": {
-    "release": "npm version",
+    "release": "npm version -m \"Updates version to %s\"",
     "postversion": "npm publish && git push && git push --tags"
   },
   "repository": {
