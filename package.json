@@ -1,0 +1,32 @@
+{
+  "name": "loglady",
+  "version": "1.0.0",
+  "description": "Pretty logging for cli apps or for when debugging",
+  "main": "index.js",
+  "scripts": {
+    "release": "npm version",
+    "postversion": "npm publish && git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexanderwallin/loglady.git"
+  },
+  "keywords": [
+    "console",
+    "log",
+    "pretty"
+  ],
+  "author": "Alexander Wallin <office@alexanderwallin.com> (http://alexanderwallin.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexanderwallin/loglady/issues"
+  },
+  "homepage": "https://github.com/alexanderwallin/loglady#readme",
+  "engines": {
+    "node": ">=4.0.0",
+    "npm": ">=3.0.0"
+  },
+  "devDependencies": {
+    "prettyjson": "^1.1.3"
+  }
+}
