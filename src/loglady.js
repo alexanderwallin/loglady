@@ -8,7 +8,17 @@ const prettyjson = require('prettyjson');
  */
 let Loglady = {};
 
+Loglady.isMuted = false;
 Loglady.isVerbose = false;
+
+/**
+ * Sets muted
+ *
+ * @param {Boolean} isMuted Muted or ont
+ */
+Loglady.setMuted = function(isMuted) {
+  Loglady.isMuted = isMuted;
+}
 
 /**
  * Sets verbose
