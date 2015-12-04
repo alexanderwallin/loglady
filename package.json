@@ -26,7 +26,8 @@
     "node": ">=4.0.0",
     "npm": ">=3.0.0"
   },
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "prettyjson": "^1.1.3"
   }
 }
