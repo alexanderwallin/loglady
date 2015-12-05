@@ -134,6 +134,42 @@ Loglady.intermediate = function(message) {
 }
 
 /**
+ * Logs a set of data in a table layout
+ *
+ * @param  {Array} data A data set
+ */
+Loglady.table = function(data) {
+  if (!data || data.length == 0) {
+    Loglady.log('Empty table.');
+    return;
+  }
+
+  Loglady.json(data);
+
+  const labels = Object.keys(data[0]);
+  const colWidth = labels.reduce((label, currValue) => label.length > currValue ? label.length : currValue) + 2;
+  const tableWidth = labels.length * colWidth;
+
+  Loglady.log('-'.repeat(tableWidth));
+  const headerStr = labels.map(label => {
+    return label + ' '.repeat(colWidth - label.length - 2) + '| ';
+  }).join('');
+  Loglady.log(headerStr);
+  Loglady.log('-'.repeat(tableWidth));
+
+  data.forEach(row => {
+    const rowStr = Object.keys(row).map(key => {
+      const col = `${row[key]}`;
+      return col + ' '.repeat(colWidth - col.length);
+    }).join('');
+
+    Loglady.log(rowStr);
+  });
+
+  Loglady.log();
+}
+
+/**
  * Logs an intro with a given title
  *
  * @param  {String} title A title
