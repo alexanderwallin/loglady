@@ -2,7 +2,7 @@
   "name": "loglady",
   "version": "1.2.0",
   "description": "Pretty logging for cli apps or for when debugging",
-  "main": "src/loglady.js",
+  "main": "dist/loglady.js",
   "scripts": {
     "dist": "./node_modules/.bin/babel ./src --out-dir ./dist",
     "prepublish": "npm run dist",
