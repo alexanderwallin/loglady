@@ -8,6 +8,7 @@ const prettyjson = require('prettyjson');
  */
 let Loglady = {};
 
+Loglady.logFunc = console.log;
 Loglady.isMuted = false;
 Loglady.isVerbose = false;
 
@@ -30,15 +31,39 @@ Loglady.setVerbose = function(isVerbose) {
 }
 
 /**
+ * Sets the desired log function to use
+ *
+ * @param {Function} logFunc A log function
+ * @throw {Error}            An Error when logFunc is not a function
+ */
+Loglady.setLogFunc = function(logFunc) {
+  if (typeof logFunc !== 'function') {
+    throw new Error(`logFunc is not a function: got ${typeof logFunc}`);
+  }
+  else {
+    Loglady.logFunc = logFunc;
+  }
+}
+
+/**
+ * Logs a set of arguments
+ *
+ * @param  {Array} args Any number of arguments
+ */
+Loglady.log = function(...args) {
+  Loglady.logFunc.apply(Loglady.logFunc, args);
+}
+
+/**
  * Logs a json object prettily
  * @param  {Object} json A json object
  */
 Loglady.json = function(json) {
-  console.log(prettyjson.render(json, {
+  Loglady.log(prettyjson.render(json, {
     keysColor: 'yellow',
     stringColor: 'white',
   }));
-  console.log();
+  Loglady.log();
 }
 
 /**
@@ -47,8 +72,8 @@ Loglady.json = function(json) {
  * @param  {Object} err An error
  */
 Loglady.error = function(err) {
-  console.log('Error:'.red.bold);
-  console.log(err);
+  Loglady.log('Error:'.red.bold);
+  Loglady.log(err);
 }
 
 /**
@@ -68,7 +93,7 @@ Loglady.pipeStdout = function(data) {
  * @param  {String} heading A section heading
  */
 Loglady.section = function(heading) {
-  console.log('\n' + heading.bold.underline);
+  Loglady.log('\n' + heading.bold.underline);
 }
 
 /**
@@ -77,7 +102,7 @@ Loglady.section = function(heading) {
  * @param  {String} heading An action heading
  */
 Loglady.action = function(heading) {
-  console.log('\n' + heading.white.bold + '\n');
+  Loglady.log('\n' + heading.white.bold + '\n');
 }
 
 /**
@@ -87,7 +112,7 @@ Loglady.action = function(heading) {
  */
 Loglady.command = function(cmd) {
   Loglady.section('Running command:');
-  console.log('\t' + cmd.blue.bold + '\n');
+  Loglady.log('\t' + cmd.blue.bold + '\n');
 }
 
 /**
@@ -96,7 +121,7 @@ Loglady.command = function(cmd) {
  * @param  {String} fn A function name/description
  */
 Loglady.fncall = function(fn) {
-  console.log('() => '.yellow + `${fn}()`.gray.bold);
+  Loglady.log('() => '.yellow + `${fn}()`.gray.bold);
 }
 
 /**
@@ -105,7 +130,7 @@ Loglady.fncall = function(fn) {
  * @param  {String} message An intermediate message
  */
 Loglady.intermediate = function(message) {
-  console.log(message.gray);
+  Loglady.log(message.gray);
 }
 
 /**
@@ -118,10 +143,10 @@ Loglady.showIntroHeader = function(title) {
   const titlePadLeft = ' '.repeat((bar.length - title.length) / 2);
   const titlePadRight = ' '.repeat(bar.length - title.length - titlePadLeft.length);
 
-  console.log(bar.red);
-  console.log(`${titlePadLeft}${title}${titlePadRight}`.red.bold);
-  console.log(bar.red);
-  console.log();
+  Loglady.log(bar.red);
+  Loglady.log(`${titlePadLeft}${title}${titlePadRight}`.red.bold);
+  Loglady.log(bar.red);
+  Loglady.log();
 }
 
 /**
@@ -130,7 +155,7 @@ Loglady.showIntroHeader = function(title) {
  * @param  {String} msg A success message
  */
 Loglady.endWithABang = function(msg) {
-  console.log(`
+  Loglady.log(`
   ──────────▄▄▄▄▄▄▄▄▄▄▄──────────
   ─────▄▄▀▀▀▀──────────▀▀▄▄──────
   ───▄▀───────────────────▀▀▄────
@@ -156,7 +181,7 @@ Loglady.endWithABang = function(msg) {
   █──▀▀▀▀▀█▄▄▄▄▀─────▀█▀▀▀▄▄▄▄▀──
   █───────────────────▀▄─────────`.green);
 
-  console.log(`
+  Loglady.log(`
   ${'- - - - - - - - - - - - - - - - - - - - - - - -'.green}
                      ${'Success!'.green.bold}
 
@@ -172,7 +197,7 @@ Loglady.endWithABang = function(msg) {
  * @param  {Object} err An error
  */
 Loglady.endInTotalDespair = function(err) {
-  console.log(`
+  Loglady.log(`
   ─────────────────────────────────
   ────────████████████████─────────
   ──────███──────────────███───────
