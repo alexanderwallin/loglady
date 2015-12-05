@@ -1,6 +1,6 @@
 {
   "name": "loglady",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Pretty logging for cli apps or for when debugging",
   "main": "dist/loglady.js",
   "files": [
