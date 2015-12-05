@@ -3,6 +3,10 @@
   "version": "1.2.1",
   "description": "Pretty logging for cli apps or for when debugging",
   "main": "dist/loglady.js",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "dist": "./node_modules/.bin/babel ./src --out-dir ./dist",
     "prepublish": "npm run dist",
