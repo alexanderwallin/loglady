@@ -55,6 +55,17 @@ Loglady.log = function(...args) {
 }
 
 /**
+ * Logs a set of arguments when in verbose mode
+ *
+ * @param  {Array} args Any number of arguments
+ */
+Loglady.logVerbose = function(...args) {
+  if (Loglady.isVerbose) {
+    Loglady.log.apply(Loglady, args);
+  }
+}
+
+/**
  * Logs a json object prettily
  * @param  {Object} json A json object
  */
@@ -121,7 +132,7 @@ Loglady.command = function(cmd) {
  * @param  {String} fn A function name/description
  */
 Loglady.fncall = function(fn) {
-  Loglady.log('() => '.yellow + `${fn}()`.gray.bold);
+  Loglady.logVerbose('() => '.yellow + `${fn}()`.gray.bold);
 }
 
 /**
@@ -130,7 +141,7 @@ Loglady.fncall = function(fn) {
  * @param  {String} message An intermediate message
  */
 Loglady.intermediate = function(message) {
-  Loglady.log(message.gray);
+  Loglady.logVerbose(message.gray);
 }
 
 /**
