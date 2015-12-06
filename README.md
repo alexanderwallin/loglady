@@ -48,7 +48,9 @@ loglady.endInTotalDespair(err);
 <a name="Examples"></a>
 ## Examples
 
-Get a taste of loglady by running `node examples/log-all-the-things.js`.
+Get a taste of loglady by running `node examples/log-all-the-things.js` and you'll see something like:
+
+![](examples/log-all-the-things.png)
 
 <a name="Roadmap"></a>
 ## Roadmap
