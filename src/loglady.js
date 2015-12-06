@@ -104,7 +104,7 @@ Loglady.pipeStdout = function(data) {
  * @param  {String} heading A section heading
  */
 Loglady.section = function(heading) {
-  Loglady.log('\n' + heading.bold.underline);
+  Loglady.log('\n' + heading.bold.underline + '\n');
 }
 
 /**
@@ -122,8 +122,8 @@ Loglady.action = function(heading) {
  * @param  {String} cmd A (terminal/cli/bash) command
  */
 Loglady.command = function(cmd) {
-  Loglady.section('Running command:');
-  Loglady.log('\t' + cmd.blue.bold + '\n');
+  Loglady.log('Running command:'.blue);
+  Loglady.log(`  ${cmd}\n`.blue.bold);
 }
 
 /**
