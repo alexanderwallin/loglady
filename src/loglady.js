@@ -185,8 +185,8 @@ Loglady.table = function(data) {
  *
  * @param  {String} title A title
  */
-Loglady.showIntroHeader = function(title) {
-  const bar = '# # # # # # # # # # # # # # # # # # # # #';
+Loglady.showIntroHeader = function(title, barChar = '# ') {
+  const bar = barChar.repeat(Math.round(40 / barChar.length)).trim();
   const titlePadLeft = ' '.repeat((bar.length - title.length) / 2);
   const titlePadRight = ' '.repeat(bar.length - title.length - titlePadLeft.length);
 
