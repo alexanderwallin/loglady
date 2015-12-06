@@ -3,9 +3,9 @@
 
 # loglady
 
-![](https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fmedia-cache-ak0.pinimg.com%2F736x%2F42%2Fdb%2Faa%2F42dbaad8be6ffbc091b323770f6a0944.jpg&f=1)
-*One Day the Sadness Will End - Log Lady - Art Print - 8x10*
-*By [DecisionandRevision](https://www.etsy.com/se-en/shop/DecisionandRevision?ref=unav_listing-r) at Etsy*
+![](https://s-media-cache-ak0.pinimg.com/736x/42/db/aa/42dbaad8be6ffbc091b323770f6a0944.jpg)
+
+*One Day the Sadness Will End - Log Lady - Art Print - 8x10, by [DecisionandRevision](https://www.etsy.com/se-en/shop/DecisionandRevision?ref=unav_listing-r) at Etsy*
 
 Utility for logging categorized and formatted output in cli apps or when debugging.
 
