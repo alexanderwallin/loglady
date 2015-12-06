@@ -50,7 +50,7 @@ loglady.endInTotalDespair(err);
 
 Get a taste of loglady by running `node examples/log-all-the-things.js` and you'll see something like:
 
-![](examples/log-all-the-things.png)
+![](examples/example-output.png)
 
 <a name="Roadmap"></a>
 ## Roadmap
