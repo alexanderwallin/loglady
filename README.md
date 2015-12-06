@@ -57,6 +57,7 @@ Get a taste of loglady by running `node examples/log-all-the-things.js`.
 - [ ] Log data sets as ascii tables
 - [ ] Customizable styling (colors and text-decoration)
 - [ ] Customizable ascii images
+- [ ] Browser support
 
 ## Developing
 
