@@ -60,6 +60,9 @@ Get a taste of loglady by running `node examples/log-all-the-things.js` and you'
 - [ ] Customizable styling (colors and text-decoration)
 - [ ] Customizable ascii images
 - [ ] Browser support
+- [ ] Log history
+- [ ] Saving log history to a file
+- [ ] Smart logging based on type of input (string, error etc)
 
 ## Developing
 
@@ -78,5 +81,6 @@ npm run release -- (major|minor|patch|x.x.x)
 ### Todo
 
 - [ ] Watch -> build
+- [ ] JS linting
 - [ ] Visual examples in README
 - [ ] Interactive tryout
