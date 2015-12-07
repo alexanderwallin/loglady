@@ -49,6 +49,16 @@ Loglady.setLogFunc = function(logFunc) {
 }
 
 /**
+ * Sets the regex to check whether to ignore a function when spying
+ * on an object.
+ *
+ * @param {Regexp} regex A regex
+ */
+Loglady.setIgnoreFuncRegex = function(regex) {
+  Loglady.ingoreFuncRegex = regex;
+}
+
+/**
  * Logs a set of arguments
  *
  * @param  {Array} args Any number of arguments
