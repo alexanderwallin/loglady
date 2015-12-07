@@ -1,6 +1,7 @@
 'use strict';
 
 const prettyjson = require('prettyjson');
+const moment = require('moment');
 
 /**
  * Loglady object
@@ -12,6 +13,8 @@ let Loglady = {};
 Loglady.logFunc = console.log;
 Loglady.isMuted = false;
 Loglady.isVerbose = false;
+Loglady.showTimestamps = false;
+Loglady.timestampFormat = 'HH:mm:ss';
 Loglady.ingoreFuncRegex = /^(__|toString|toLocaleString|valueOf|hasOwnProperty|isPrototypeOf|propertyIsEnumerable)/;
 
 
@@ -49,6 +52,24 @@ Loglady.setLogFunc = function(logFunc) {
 }
 
 /**
+ * Sets whether to show timestamps
+ *
+ * @param {Boolean} showTimestamps A boolean
+ */
+Loglady.setShowTimestamps = function(showTimestamps) {
+  Loglady.showTimestamps = showTimestamps;
+}
+
+/**
+ * Sets timestamp format
+ *
+ * @param {String} timestampFormat A moment time format
+ */
+Loglady.setTimestampFormat = function(timestampFormat) {
+  Loglady.timestampFormat = timestampFormat;
+}
+
+/**
  * Sets the regex to check whether to ignore a function when spying
  * on an object.
  *
@@ -64,6 +85,19 @@ Loglady.setIgnoreFuncRegex = function(regex) {
  * @param  {Array} args Any number of arguments
  */
 Loglady.log = function(...args) {
+  if (Loglady.showTimestamps) {
+    const now = moment().format(Loglady.timestampFormat);
+    const nowStr = `${now}  `.gray;
+
+    for (let i in args) {
+      if (typeof args[i] === 'string') {
+        args[i] = args[i].replace(/\n/g, `\n${nowStr}`);
+      }
+    }
+
+    args.unshift(nowStr);
+  }
+
   Loglady.logFunc.apply(Loglady.logFunc, args);
 }
 

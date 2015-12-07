@@ -57,7 +57,7 @@ Get a taste of loglady by running `node examples/log-all-the-things.js` and you'
 <a name="Roadmap"></a>
 ## Roadmap
 
-- [ ] Some sort of (configurable) timestamps
+- [x] Some sort of (configurable) timestamps
 - [ ] Log data sets as ascii tables
 - [ ] Customizable styling (colors and text-decoration)
 - [ ] Customizable ascii images

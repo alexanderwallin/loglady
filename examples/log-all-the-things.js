@@ -36,6 +36,9 @@ loglady.bool(0);
 loglady.bool(null);
 loglady.bool('hi');
 
+loglady.setShowTimestamps(true);
+loglady.action('Enabling timestamps');
+
 loglady.action('Executing commands');
 loglady.command('ls -la');
 loglady.intermediate(`Let's be verbose list the result:
