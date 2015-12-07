@@ -1,5 +1,6 @@
 'use strict';
 
+const colors = require('colors');
 const prettyjson = require('prettyjson');
 const moment = require('moment');
 
