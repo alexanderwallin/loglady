@@ -1,3 +1,10 @@
+/**
+ * Utility for logging categorized and formatted output in
+ * cli apps or when debugging.
+ *
+ * @author Alexander Wallin <office@alexanderwallin.com>
+ */
+
 'use strict';
 
 const colors = require('colors');

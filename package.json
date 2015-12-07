@@ -20,7 +20,11 @@
   "keywords": [
     "console",
     "log",
-    "pretty"
+    "logger",
+    "pretty",
+    "colors",
+    "debug",
+    "debugger"
   ],
   "author": "Alexander Wallin <office@alexanderwallin.com> (http://alexanderwallin.com)",
   "license": "ISC",
