@@ -8,9 +8,12 @@ const prettyjson = require('prettyjson');
  */
 let Loglady = {};
 
+// Configs
 Loglady.logFunc = console.log;
 Loglady.isMuted = false;
 Loglady.isVerbose = false;
+Loglady.ingoreFuncRegex = /^(__|toString|toLocaleString|valueOf|hasOwnProperty|isPrototypeOf|propertyIsEnumerable)/;
+
 
 /**
  * Sets muted
@@ -131,8 +134,8 @@ Loglady.command = function(cmd) {
  *
  * @param  {String} fn A function name/description
  */
-Loglady.fncall = function(fn) {
-  Loglady.logVerbose('() => '.yellow + `${fn}()`.gray.bold);
+Loglady.fncall = function(fn, args = []) {
+  Loglady.logVerbose('() => '.yellow + `${fn}(${args.join(', ')})`.gray.bold);
 }
 
 /**
@@ -273,6 +276,44 @@ Loglady.endInTotalDespair = function(err) {
             You bad coder.
   `.red);
   console.error(err);
+}
+
+/**
+ * Intercepts all calls to functions defined on a given object
+ * and logs the calls + results when they are invoked.
+ *
+ * After logging the function call, the result is returned.
+ *
+ * @param  {Object} obj  An object or instance
+ * @param  {String} name (Options) the name of the object/instance
+ */
+Loglady.spyOn = function(obj, name = null) {
+  Loglady.action(`Spying on object ${name ? name : ''}`);
+
+  const protoFuncs = Object.getOwnPropertyNames(Object.getPrototypeOf(obj));
+  const propFuncs = Object.getOwnPropertyNames(obj);
+  const allFuncs = protoFuncs.concat(propFuncs)
+    .sort()
+    .filter(fnName => {
+      return obj[fnName]
+        && typeof obj[fnName] === 'function'
+        && Loglady.ingoreFuncRegex.test(fnName) === false;
+    });
+
+  for (let fnName of allFuncs) {
+    const originalFn = obj[fnName];
+
+    // Wrap the original function inside one that logs its calling
+    // context and results, then return the results
+    obj[fnName] = (...args) => {
+      Loglady.fncall(`${name ? name+'.' : ''}${fnName}`, args);
+
+      const result = originalFn.apply(obj, args);
+      Loglady.intermediate(` -> ${result}`);
+
+      return result;
+    }
+  }
 }
 
 module.exports = Loglady;

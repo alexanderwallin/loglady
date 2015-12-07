@@ -63,7 +63,7 @@ Get a taste of loglady by running `node examples/log-all-the-things.js` and you'
 - [ ] Log history
 - [ ] Saving log history to a file
 - [ ] Smart logging based on type of input (string, error etc)
-- [ ] Spy on an object and log all its function calls
+- [x] Spy on an object and log all its function calls
 
 ## Developing
 
