@@ -31,6 +31,7 @@ loglady.setMuted(isMuted);
 loglady.setVerbose(isVerbose);
 loglady.setLogFunc(logFunc);
 loglady.setIgnoreFuncRegex(regex);
+loglady.clearHistory();
 loglady.log(...args);
 loglady.logVerbose(...args);
 loglady.json(json);

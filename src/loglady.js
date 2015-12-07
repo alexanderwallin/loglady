@@ -19,6 +19,8 @@ Loglady.showTimestamps = false;
 Loglady.timestampFormat = 'HH:mm:ss';
 Loglady.ingoreFuncRegex = /^(__|toString|toLocaleString|valueOf|hasOwnProperty|isPrototypeOf|propertyIsEnumerable)/;
 
+// History
+Loglady.history = [];
 
 /**
  * Sets muted
@@ -82,6 +84,14 @@ Loglady.setIgnoreFuncRegex = function(regex) {
 }
 
 /**
+ * Clears the log history.
+ */
+Loglady.clearHistory = function() {
+  Loglady.logVerbose('Loglady: Clearing log history.');
+  Loglady.history = [];
+}
+
+/**
  * Logs a set of arguments
  *
  * @param  {Array} args Any number of arguments
@@ -101,6 +111,11 @@ Loglady.log = function(...args) {
   }
 
   Loglady.logFunc.apply(Loglady.logFunc, args);
+
+  Loglady.history.push({
+    timestamp: moment().toJSON(),
+    args: args,
+  });
 }
 
 /**
