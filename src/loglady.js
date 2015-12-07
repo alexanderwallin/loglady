@@ -9,6 +9,8 @@ const moment = require('moment');
  */
 let Loglady = {};
 
+Loglady.version = require('../package.json').version;
+
 // Configs
 Loglady.logFunc = console.log;
 Loglady.isMuted = false;
