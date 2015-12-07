@@ -30,6 +30,7 @@ const loglady = require('loglady');
 loglady.setMuted(isMuted);
 loglady.setVerbose(isVerbose);
 loglady.setLogFunc(logFunc);
+loglady.setIgnoreFuncRegex(regex);
 loglady.log(...args);
 loglady.logVerbose(...args);
 loglady.json(json);
@@ -43,6 +44,7 @@ loglady.intermediate(message);
 loglady.showIntroHeader(title, barChar = '#');
 loglady.endWithABang(msg);
 loglady.endInTotalDespair(err);
+loglady.spyOn(obj, name = null);
 ```
 
 <a name="Examples"></a>
