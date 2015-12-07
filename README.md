@@ -66,6 +66,8 @@ Get a taste of loglady by running `node examples/log-all-the-things.js` and you'
 - [ ] Saving log history to a file
 - [ ] Smart logging based on type of input (string, error etc)
 - [x] Spy on an object and log all its function calls
+- [ ] Styled boolean logging
+- [ ] Ability to theme output using TextMate/Sublime/Atom color schemes
 
 ## Developing
 
