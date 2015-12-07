@@ -79,6 +79,19 @@ Loglady.logVerbose = function(...args) {
 }
 
 /**
+ * Logs an object cast as a boolean
+ *
+ * @param  {Any} obj Any type of object
+ */
+Loglady.bool = function(obj) {
+  let boolStr = `${!!obj}`.magenta.bold;
+  if (typeof obj !== 'boolean')
+    boolStr += ` (${obj})`.gray;
+
+  Loglady.log(boolStr);
+}
+
+/**
  * Logs a json object prettily
  * @param  {Object} json A json object
  */

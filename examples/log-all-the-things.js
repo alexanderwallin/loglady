@@ -29,6 +29,12 @@ loglady.json({
     },
   ],
 });
+loglady.action('Booleans:');
+loglady.bool(true);
+loglady.bool(1);
+loglady.bool(0);
+loglady.bool(null);
+loglady.bool('hi');
 
 loglady.action('Executing commands');
 loglady.command('ls -la');
